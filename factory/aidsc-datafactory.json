@@ -1,0 +1,9 @@
+{
+	"name": "aidsc-datafactory",
+	"location": "eastus2",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "e3cdd172-4044-4198-8958-a91279df8901",
+		"tenantId": "d57d32cc-c121-488f-b07b-dfe705680c71"
+	}
+}
