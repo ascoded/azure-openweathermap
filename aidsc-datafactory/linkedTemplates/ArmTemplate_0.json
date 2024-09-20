@@ -499,8 +499,8 @@
 								"referenceName": "RestResource2",
 								"type": "DatasetReference",
 								"parameters": {
-									"lat": 42.3601,
-									"lon": -71.0589,
+									"lat": 42.361145,
+									"lon": -71.057083,
 									"appid": {
 										"value": "@activity('Web2Activity').output.value",
 										"type": "Expression"
