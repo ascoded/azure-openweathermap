@@ -177,7 +177,7 @@
 						"typeProperties": {
 							"variableName": "weeks",
 							"value": {
-								"value": "@range(0, 2)\n",
+								"value": "@range(0, 3)\n",
 								"type": "Expression"
 							}
 						}
