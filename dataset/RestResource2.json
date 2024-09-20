@@ -1,0 +1,25 @@
+{
+	"name": "RestResource2",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "RestServiceAirPollution",
+			"type": "LinkedServiceReference"
+		},
+		"parameters": {
+			"lat": {
+				"type": "float",
+				"defaultValue": 42.3601
+			},
+			"lon": {
+				"type": "float",
+				"defaultValue": -71.0589
+			},
+			"appid": {
+				"type": "string"
+			}
+		},
+		"annotations": [],
+		"type": "RestResource",
+		"schema": []
+	}
+}
