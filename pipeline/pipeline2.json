@@ -125,7 +125,14 @@
 			{
 				"name": "Copy data2",
 				"type": "Copy",
-				"dependsOn": [],
+				"dependsOn": [
+					{
+						"activity": "Web1Activity",
+						"dependencyConditions": [
+							"Skipped"
+						]
+					}
+				],
 				"policy": {
 					"timeout": "0.12:00:00",
 					"retry": 0,
@@ -164,8 +171,14 @@
 							"lat": 42.3601,
 							"lon": -71.0589,
 							"appid": "@activity('Web1Activity').output.value",
-							"start": "@div(sub(ticks(addDays(utcNow(), mul(item(), -7))), ticks('1970-01-01T00:00:00Z')), 10000000)",
-							"end": "@div(sub(ticks(addDays(utcNow(), add(mul(item(), -7), 7))), ticks('1970-01-01T00:00:00Z')), 10000000)"
+							"start": {
+								"value": "addYears(utcNow(), -1)",
+								"type": "Expression"
+							},
+							"end": {
+								"value": "utcNow()",
+								"type": "Expression"
+							}
 						}
 					}
 				],
