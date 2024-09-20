@@ -6,7 +6,16 @@
 		"typeProperties": {
 			"url": "http://api.openweathermap.org/",
 			"enableServerCertificateValidation": true,
-			"authenticationType": "Anonymous"
+			"authenticationType": "Basic",
+			"userName": "aidsc",
+			"password": {
+				"type": "AzureKeyVaultSecret",
+				"store": {
+					"referenceName": "AzureKeyVault1",
+					"type": "LinkedServiceReference"
+				},
+				"secretName": "openweatherapikey"
+			}
 		}
 	}
 }
