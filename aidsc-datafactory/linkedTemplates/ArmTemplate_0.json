@@ -163,7 +163,7 @@
 					},
 					"appid": {
 						"type": "string",
-						"defaultValue": "cffdbe14b6a9e2f1f73e4b239314a0ba"
+						"defaultValue": "@activity('name of the web activity').output.value"
 					}
 				},
 				"annotations": [],
@@ -210,7 +210,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Web1",
+						"name": "Web1Activity",
 						"type": "WebActivity",
 						"dependsOn": [],
 						"policy": {
@@ -290,6 +290,8 @@
 											"referenceName": "RestResource1",
 											"type": "DatasetReference",
 											"parameters": {
+												"lat": 42.361145,
+												"lon": -71.057083,
 												"start": {
 													"value": "@div(sub(ticks(addDays(utcNow(), mul(item(), -7))), ticks('1970-01-01T00:00:00Z')), 10000000)\n",
 													"type": "Expression"
@@ -297,7 +299,9 @@
 												"end": {
 													"value": "@div(sub(ticks(addDays(utcNow(), add(mul(item(), -7), 6))), ticks('1970-01-01T00:00:00Z')), 10000000)\n",
 													"type": "Expression"
-												}
+												},
+												"dataType": "hour",
+												"appid": "@activity('name of the web activity').output.value"
 											}
 										}
 									],
@@ -317,7 +321,7 @@
 						"type": "SetVariable",
 						"dependsOn": [
 							{
-								"activity": "Web1",
+								"activity": "Web1Activity",
 								"dependencyConditions": [
 									"Completed"
 								]
