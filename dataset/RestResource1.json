@@ -26,7 +26,7 @@
 			},
 			"appid": {
 				"type": "string",
-				"defaultValue": "cffdbe14b6a9e2f1f73e4b239314a0ba"
+				"defaultValue": "@activity('name of the web activity').output.value"
 			}
 		},
 		"annotations": [],
