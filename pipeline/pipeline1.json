@@ -13,6 +13,7 @@
 					"secureOutput": false,
 					"secureInput": false
 				},
+				"userProperties": [],
 				"typeProperties": {
 					"method": "GET",
 					"url": "https://openweathervault/secrets/OpenWeatherAPIKey?api-version=7.0",
@@ -132,30 +133,6 @@
 				}
 			}
 		],
-		"parameters": {
-			"lat": {
-				"type": "float",
-				"defaultValue": 42.3601
-			},
-			"lon": {
-				"type": "float",
-				"defaultValue": -71.0589
-			},
-			"type": {
-				"type": "string",
-				"defaultValue": "hour"
-			},
-			"appid": {
-				"type": "string",
-				"defaultValue": "cffdbe14b6a9e2f1f73e4b239314a0ba"
-			},
-			"start": {
-				"type": "string"
-			},
-			"end": {
-				"type": "string"
-			}
-		},
 		"variables": {
 			"week": {
 				"type": "Integer"
