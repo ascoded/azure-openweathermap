@@ -432,7 +432,7 @@
 			"properties": {
 				"activities": [
 					{
-						"name": "Web1Activity",
+						"name": "Web2Activity",
 						"type": "WebActivity",
 						"dependsOn": [],
 						"policy": {
@@ -458,7 +458,7 @@
 						"type": "Copy",
 						"dependsOn": [
 							{
-								"activity": "Web1Activity",
+								"activity": "Web2Activity",
 								"dependencyConditions": [
 									"Succeeded"
 								]
@@ -501,7 +501,10 @@
 								"parameters": {
 									"lat": 42.3601,
 									"lon": -71.0589,
-									"appid": "@activity('Web1Activity').output.value",
+									"appid": {
+										"value": "@activity('Web2Activity').output.value",
+										"type": "Expression"
+									},
 									"start": {
 										"value": "1726858287",
 										"type": "Expression"
