@@ -301,7 +301,10 @@
 													"type": "Expression"
 												},
 												"dataType": "hour",
-												"appid": "@activity('name of the web activity').output.value"
+												"appid": {
+													"value": "@activity('Web1Activity').output.value",
+													"type": "Expression"
+												}
 											}
 										}
 									],
