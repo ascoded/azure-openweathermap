@@ -552,6 +552,61 @@
 								"type": "Expression"
 							}
 						}
+					},
+					{
+						"name": "Copy data2",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "0.12:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:01:40",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET",
+								"paginationRules": {
+									"supportRFC5988": "true"
+								}
+							},
+							"sink": {
+								"type": "JsonSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings",
+									"copyBehavior": "FlattenHierarchy"
+								},
+								"formatSettings": {
+									"type": "JsonWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "RestResource2",
+								"type": "DatasetReference",
+								"parameters": {
+									"lat": 42.3601,
+									"lon": -71.0589,
+									"appid": "@activity('Web1Activity').output.value",
+									"start": "@div(sub(ticks(addDays(utcNow(), mul(item(), -7))), ticks('1970-01-01T00:00:00Z')), 10000000)",
+									"end": "@div(sub(ticks(addDays(utcNow(), add(mul(item(), -7), 7))), ticks('1970-01-01T00:00:00Z')), 10000000)"
+								}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Json2",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
 					}
 				],
 				"policy": {
