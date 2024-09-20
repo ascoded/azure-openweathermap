@@ -16,10 +16,19 @@
 			},
 			"appid": {
 				"type": "string"
+			},
+			"start": {
+				"type": "string"
+			},
+			"end": {
+				"type": "string"
 			}
 		},
 		"annotations": [],
 		"type": "RestResource",
+		"typeProperties": {
+			"relativeUrl": "http://api.openweathermap.org/data/2.5/air_pollution/history?lat={lat}&lon={lon}&start={start}&end={end}&appid={API key}"
+		},
 		"schema": []
 	}
 }
