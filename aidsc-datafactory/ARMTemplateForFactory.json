@@ -236,7 +236,7 @@
 							{
 								"activity": "Web1Activity",
 								"dependencyConditions": [
-									"Skipped"
+									"Succeeded"
 								]
 							}
 						],
