@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Web1",
+				"name": "Web1Activity",
 				"type": "WebActivity",
 				"dependsOn": [],
 				"policy": {
@@ -105,7 +105,7 @@
 				"type": "SetVariable",
 				"dependsOn": [
 					{
-						"activity": "Web1",
+						"activity": "Web1Activity",
 						"dependencyConditions": [
 							"Completed"
 						]
