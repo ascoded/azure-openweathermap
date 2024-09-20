@@ -5,17 +5,20 @@
 		"factoryName": {
 			"value": "aidsc-datafactory"
 		},
-		"GitHub1_credential": {
-			"value": ""
-		},
 		"AzureDataLakeStorage1_accountKey": {
 			"value": ""
 		},
+		"GitHub1_credential": {
+			"value": ""
+		},
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://aidscstorage.dfs.core.windows.net/"
+		},
+		"AzureKeyVault1_properties_typeProperties_baseUrl": {
+			"value": "https://openweathervault.vault.azure.net/"
+		},
 		"GitHub1_properties_typeProperties_username": {
 			"value": "ascoded"
-		},
-		"RestServiceWeatherAPI_properties_typeProperties_url": {
-			"value": "https://history.openweathermap.org/"
 		},
 		"RestServiceAirPollution_properties_typeProperties_url": {
 			"value": "http://api.openweathermap.org/"
@@ -23,11 +26,8 @@
 		"RestServiceAirPollution_properties_typeProperties_userName": {
 			"value": "aidsc"
 		},
-		"AzureDataLakeStorage1_properties_typeProperties_url": {
-			"value": "https://aidscstorage.dfs.core.windows.net/"
-		},
-		"AzureKeyVault1_properties_typeProperties_baseUrl": {
-			"value": "https://openweathervault.vault.azure.net/"
+		"RestServiceWeatherAPI_properties_typeProperties_url": {
+			"value": "https://history.openweathermap.org/"
 		}
 	}
 }
