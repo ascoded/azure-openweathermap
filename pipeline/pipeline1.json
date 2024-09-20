@@ -27,7 +27,7 @@
 				"type": "ForEach",
 				"dependsOn": [
 					{
-						"activity": "Web1",
+						"activity": "Set variable1",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -62,16 +62,66 @@
 										"supportRFC5988": "true"
 									}
 								},
+								"sink": {
+									"type": "JsonSink",
+									"storeSettings": {
+										"type": "AzureBlobFSWriteSettings",
+										"copyBehavior": "FlattenHierarchy"
+									},
+									"formatSettings": {
+										"type": "JsonWriteSettings"
+									}
+								},
 								"enableStaging": false
 							},
 							"inputs": [
 								{
 									"referenceName": "RestResource1",
+									"type": "DatasetReference",
+									"parameters": {
+										"start": {
+											"value": "@div(sub(ticks(addDays(utcNow(), mul(item(), -7))), ticks('1970-01-01T00:00:00Z')), 10000000)\n",
+											"type": "Expression"
+										},
+										"end": {
+											"value": "@div(sub(ticks(addDays(utcNow(), add(mul(item(), -7), 6))), ticks('1970-01-01T00:00:00Z')), 10000000)\n",
+											"type": "Expression"
+										}
+									}
+								}
+							],
+							"outputs": [
+								{
+									"referenceName": "Json1",
 									"type": "DatasetReference"
 								}
 							]
 						}
 					]
+				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Web1",
+						"dependencyConditions": [
+							"Completed"
+						]
+					}
+				],
+				"policy": {
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "weeks",
+					"value": {
+						"value": "@range(0, 2)\n",
+						"type": "Expression"
+					}
 				}
 			}
 		],
