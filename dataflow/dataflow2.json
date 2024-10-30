@@ -25,6 +25,9 @@
 				},
 				{
 					"name": "derivedColumn2"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -66,7 +69,25 @@
 				"          so2 = round(so2, 2),",
 				"          pm2_5 = round(pm2_5, 2),",
 				"          pm10 = round(pm10, 2),",
-				"          nh3 = round(nh3, 2)) ~> derivedColumn2"
+				"          nh3 = round(nh3, 2)) ~> derivedColumn2",
+				"derivedColumn2 select(mapColumn(",
+				"          lon,",
+				"          lat,",
+				"          aqi,",
+				"          co,",
+				"          no,",
+				"          no2,",
+				"          o3,",
+				"          so2,",
+				"          pm2_5,",
+				"          pm10,",
+				"          nh3,",
+				"          corrected_timestamp,",
+				"          location,",
+				"          id",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}
