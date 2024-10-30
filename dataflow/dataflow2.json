@@ -19,6 +19,9 @@
 				},
 				{
 					"name": "derivedColumn1"
+				},
+				{
+					"name": "filter1"
 				}
 			],
 			"scriptLines": [
@@ -48,7 +51,9 @@
 				"     skipDuplicateMapInputs: false,",
 				"     skipDuplicateMapOutputs: false) ~> flatten1",
 				"flatten1 derive(corrected_timestamp = iif(length(toString(dt)) == 10, toInteger(dt), toInteger(null())),",
-				"          location = \"Boston\") ~> derivedColumn1"
+				"          location = \"Boston\") ~> derivedColumn1",
+				"derivedColumn1 filter(!isNull(aqi) && !isNull(dt)",
+				") ~> filter1"
 			]
 		}
 	}
