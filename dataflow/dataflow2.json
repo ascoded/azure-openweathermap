@@ -16,6 +16,9 @@
 			"transformations": [
 				{
 					"name": "flatten1"
+				},
+				{
+					"name": "derivedColumn1"
 				}
 			],
 			"scriptLines": [
@@ -43,7 +46,9 @@
 				"          dt = list.dt",
 				"     ),",
 				"     skipDuplicateMapInputs: false,",
-				"     skipDuplicateMapOutputs: false) ~> flatten1"
+				"     skipDuplicateMapOutputs: false) ~> flatten1",
+				"flatten1 derive(corrected_timestamp = iif(length(toString(dt)) == 10, toInteger(dt), toInteger(null())),",
+				"          location = \"Boston\") ~> derivedColumn1"
 			]
 		}
 	}
