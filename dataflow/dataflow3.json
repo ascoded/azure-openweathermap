@@ -25,6 +25,9 @@
 				},
 				{
 					"name": "derivedColumn2"
+				},
+				{
+					"name": "select1"
 				}
 			],
 			"scriptLines": [
@@ -84,7 +87,41 @@
 				"          weather_id_value = weather_id,",
 				"          weather_main_value = split(toString(weather_main), ': ')[1] ,",
 				"          weather_description_value = split(toString(weather_description), ': ')[1] ,",
-				"          weather_icon_value = split(toString(weather_icon), ': ')[1] ) ~> derivedColumn2"
+				"          weather_icon_value = split(toString(weather_icon), ': ')[1] ,",
+				"          temp_F = round((temp - 273.15) * 1.8 + 32, 2),",
+				"          temp_C = round(temp - 273.15, 2)) ~> derivedColumn2",
+				"derivedColumn2 select(mapColumn(",
+				"          clouds_all,",
+				"          feels_like,",
+				"          humidity,",
+				"          pressure,",
+				"          temp,",
+				"          temp_max,",
+				"          temp_min,",
+				"          wind_deg,",
+				"          wind_gust,",
+				"          wind_speed,",
+				"          corrected_timestamp,",
+				"          location,",
+				"          date_time,",
+				"          id,",
+				"          temp_min_C,",
+				"          temp_max_C,",
+				"          feels_like_C,",
+				"          temp_min_F,",
+				"          temp_max_F,",
+				"          feels_like_F,",
+				"          lat,",
+				"          lon,",
+				"          weather_id_value,",
+				"          weather_main_value,",
+				"          weather_description_value,",
+				"          weather_icon_value,",
+				"          temp_F,",
+				"          temp_C",
+				"     ),",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> select1"
 			]
 		}
 	}
