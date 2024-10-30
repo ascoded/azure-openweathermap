@@ -12,7 +12,15 @@
 					"name": "AirPollData"
 				}
 			],
-			"sinks": [],
+			"sinks": [
+				{
+					"dataset": {
+						"referenceName": "Parquet2",
+						"type": "DatasetReference"
+					},
+					"name": "sink1"
+				}
+			],
 			"transformations": [
 				{
 					"name": "flatten1"
@@ -58,8 +66,7 @@
 				"     skipDuplicateMapOutputs: false) ~> flatten1",
 				"flatten1 derive(corrected_timestamp = iif(length(toString(dt)) == 10, toInteger(dt), toInteger(null())),",
 				"          location = \"Boston\") ~> derivedColumn1",
-				"derivedColumn1 filter(!isNull(aqi) && !isNull(dt)",
-				") ~> filter1",
+				"derivedColumn1 filter(!isNull(aqi) && !isNull(dt)) ~> filter1",
 				"filter1 derive(corrected_timestamp = toTimestamp(toLong(corrected_timestamp) * 1000),",
 				"          id = concat(location, toString(corrected_timestamp)),",
 				"          co = round(co, 2),",
@@ -87,7 +94,15 @@
 				"          id",
 				"     ),",
 				"     skipDuplicateMapInputs: true,",
-				"     skipDuplicateMapOutputs: true) ~> select1"
+				"     skipDuplicateMapOutputs: true) ~> select1",
+				"select1 sink(allowSchemaDrift: true,",
+				"     validateSchema: false,",
+				"     format: 'parquet',",
+				"     umask: 0022,",
+				"     preCommands: [],",
+				"     postCommands: [],",
+				"     skipDuplicateMapInputs: true,",
+				"     skipDuplicateMapOutputs: true) ~> sink1"
 			]
 		}
 	}
