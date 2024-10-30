@@ -22,6 +22,9 @@
 				},
 				{
 					"name": "filter1"
+				},
+				{
+					"name": "derivedColumn2"
 				}
 			],
 			"scriptLines": [
@@ -53,7 +56,17 @@
 				"flatten1 derive(corrected_timestamp = iif(length(toString(dt)) == 10, toInteger(dt), toInteger(null())),",
 				"          location = \"Boston\") ~> derivedColumn1",
 				"derivedColumn1 filter(!isNull(aqi) && !isNull(dt)",
-				") ~> filter1"
+				") ~> filter1",
+				"filter1 derive(corrected_timestamp = toTimestamp(toLong(corrected_timestamp) * 1000),",
+				"          id = concat(location, toString(corrected_timestamp)),",
+				"          co = round(co, 2),",
+				"          no = round(no, 2),",
+				"          no2 = round(no2, 2),",
+				"          o3 = round(o3, 2),",
+				"          so2 = round(so2, 2),",
+				"          pm2_5 = round(pm2_5, 2),",
+				"          pm10 = round(pm10, 2),",
+				"          nh3 = round(nh3, 2)) ~> derivedColumn2"
 			]
 		}
 	}
