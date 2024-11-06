@@ -756,7 +756,7 @@
 						"flatten1 derive(corrected_timestamp = iif(length(toString(timestamp)) == 10, timestamp, toInteger(null())),",
 						"          location = \"Boston\") ~> derivedColumn1",
 						"derivedColumn1 filter(!isNull(temp) && !isNull(humidity) && length(toString(timestamp)) == 10) ~> filter1",
-						"filter1 derive(date_time = toTimestamp(toLong(corrected_timestamp * 1000)),",
+						"filter1 derive(date_time = toTimestamp(toLong(corrected_timestamp) * 1000),",
 						"          id = concat(location, toString(corrected_timestamp)),",
 						"          temp_min_C = round(temp_min - 273.15, 2),",
 						"          temp_max_C = round(temp_max - 273.15, 2),",
