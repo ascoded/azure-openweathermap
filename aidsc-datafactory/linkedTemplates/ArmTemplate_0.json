@@ -570,7 +570,7 @@
 						"          feels_like_F = round((feels_like - 273.15) * 1.8 + 32, 2),",
 						"          lat = 42.3601,",
 						"          lon = -71.0589,",
-						"          weather_id_value = weather_id,",
+						"          weather_id_value = toInteger(split(toString(weather_id[1]), ': ')[1]),",
 						"          weather_main_value = split(toString(weather_main), ': ')[1],",
 						"          weather_description_value = split(toString(weather_description), ': ')[1],",
 						"          weather_icon_value = split(toString(weather_icon), ': ')[1],",
